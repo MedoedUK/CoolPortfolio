@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шахматы</title>
+</head>
+<body>
+
+<form id="ChessForm">
+    <label for="ChessType">Выберите вашу фигуру:</label>
+    <select id="ChessType">
+        <option value="rook">Ладья</option>
+        <option value="queen">Королева</option>
+        <option value="knight">Конь</option>
+        <option value="bishop">Слон</option>
+        <option value="king">Король</option>
+    </select> 
+    <br>
+    <label for="a">Вертикаль:</label>
+    <input type="number" id="a" name="a" min="1" max="8" required>
+    <label for="b">Горизонталь:</label>
+    <input type="number" id="b" name="b" min="1" max="8" required>
+</form>
+<br>
+<form id="ChessFormBlack">
+    <br>
+    <label for="ChessTypeBlack">Выберите фигуру противника:</label>
+    <select id="ChessTypeBlack">
+        <option value="rook">Ладья</option>
+        <option value="queen">Королева</option>
+        <option value="knight">Конь</option>
+        <option value="bishop">Слон</option>
+        <option value="king">Король</option>
+    </select>
+    <br>
+    <label for="c">Вертикаль:</label>
+    <input type="number" id="c" name="c" min="1" max="8" required>
+    <label for="d">Горизонталь:</label>
+    <input type="number" id="d" name="d" min="1" max="8" required>
+</form>
+<br>
+
+<p>Проверить угрозу на поле:</p>
+<label for="e">Вертикаль:</label>
+<input type="number" id="e" name="e" min="1" max="8" required>
+
+<label for="f">Горизонталь:</label>
+<input type="number" id="f" name="f" min="1" max="8" required>
+
+<br>
+<br>
+<button onclick="checkThreats()">Проверить</button>
+
+<h1>Результат угрозы</h1>
+<p>Угроза: <span id="threatResult"></span></p>
+
+<script>
+function checkRook(a, b, c, d) {
+    return a === c || b === d;
+}
+
+function checkBishop(a, b, c, d) {
+    return Math.abs(a - c) === Math.abs(b - d);
+}
+
+function checkKing(a, b, c, d) {
+    return Math.abs(a - c) <= 1 && Math.abs(b - d) <= 1;
+}
+
+function checkQueen(a, b, c, d) {
+    return checkRook(a, b, c, d) || checkBishop(a, b, c, d);
+}
+
+function checkKnight(a, b, c, d) {
+    return (Math.abs(a - c) === 2 && Math.abs(b - d) === 1) ||
+           (Math.abs(a - c) === 1 && Math.abs(b - d) === 2);
+}   
+
+
+function checkThreats() {
+    let a = parseInt(document.getElementById('a').value);
+    let b = parseInt(document.getElementById('b').value);
+    let c = parseInt(document.getElementById('c').value);
+    let d = parseInt(document.getElementById('d').value);
+    let e = parseInt(document.getElementById('e').value);
+    let f = parseInt(document.getElementById('f').value);
+
+    if (a > 8 || b > 8 || c > 8 || d > 8 || e > 8 || f > 8 ||
+        a < 1 || b < 1 || c < 1 || d < 1 || e < 1 || f < 1) {
+        alert("Введите числа от 1 до 8");
+        return;
+    }
+
+    let isUnderThreat = false;
+
+    let opponentType = document.getElementById('ChessTypeBlack').value;
+
+    if (opponentType === "rook") {
+        isUnderThreat = checkRook(a, b, c, d);
+    } else if (opponentType === "queen") {
+        isUnderThreat = checkQueen(a, b, c, d);
+    } else if (opponentType === "knight") {
+        isUnderThreat = checkKnight(a, b, c, d);
+    } else if (opponentType === "bishop") {
+        isUnderThreat = checkBishop(a, b, c ,d);
+    } else if (opponentType === "king") {
+        isUnderThreat = checkKing(a, b, c ,d);
+    }
+
+    document.getElementById('threatResult').textContent = isUnderThreat ? "Да" : "Нет";
+}
+</script>
+<a href="index.html"><button style="border-radius: 50%; padding: 10px; border: none; background: transparent; cursor: pointer;"><img src="Назад.png" style="height: 30px;"></button></a>
+</body>
+</html>

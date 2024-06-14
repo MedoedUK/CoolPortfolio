@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Мы</title>
+  <style>
+    #output {
+      margin-top: 10px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Введите слово</h1>
+  <input type="text" id="inputWord" placeholder="Введите слово">
+  <button onclick="checkString()">Ввод</button>
+  <div id="output"></div>
+
+  <script>
+    document.getElementById('inputWord').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        checkString();
+      }
+    });
+
+    function checkString() {
+      let input = document.getElementById('inputWord').value;
+      let output = document.getElementById('output');
+      output.innerHTML = '';
+
+      let hasA = /а|a/i.test(input);
+      let hasM = /м/i.test(input);
+      let hasY = /ы/i.test(input);
+
+      let result = [];
+
+      if (hasA) {
+        result.push('А');
+      }
+
+      if (hasM && hasY) {
+        result.push('Мы');
+      }
+
+      if (result.length === 0) {
+        result.push('нет такой буквы');
+      }
+
+      output.innerHTML = result.join('<br>');
+    }
+  </script>
+</body>
+</html>
+
+<a href="index.html"><button style="border-radius: 50%; padding: 10px; border: none; background: transparent; cursor: pointer;"><img src="Назад.png" style="height: 30px;"></button></a>

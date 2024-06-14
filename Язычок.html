@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>Выбор языка</title>
+    <script>
+        function displayLanguage() {
+           
+            var lang = document.getElementById("langInput").value;
+
+            
+            var result;
+
+            switch (lang) {
+                case "ru":
+                    result = "Русский";
+                    break;
+                case "en":
+                    result = "Английский";
+                    break;
+                case "fr":
+                    result = "Французский";
+                    break;
+                case "de":
+                    result = "Немецкий";
+                    break;
+                default:
+                    result = "Язык неизвестен";
+            }
+          
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>Выбор языка</h1>
+    <label for="langInput">Выберите язык (ru, en, fr, de):</label>
+    <input type="text" id="langInput">
+    <button onclick="displayLanguage()">Показать</button>
+    <h2>Ваш язык:</h2>
+    <p id="result" style="margin-top: -0.5%;"></p>
+    <a href="index.html"><button style="border-radius: 50%; padding: 10px; border: none; background: transparent; cursor: pointer;"><img src="Назад.png" style="height: 30px;"></button></a>
+</body>
+</html>

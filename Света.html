@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div {
+            text-align: center;
+            margin-top: -8%;
+        }
+        .gray {
+            background: gray;
+            border: none;
+            padding-top: 155px;
+            padding-left: 150px;
+            border-radius: 100%;
+            margin-top: 10%;
+        }
+        .red {
+            background: red;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .green {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+
+<button id="red">Красный</button>
+<button id="yellow">Жёлтый</button>
+<button id="green">Зелёный</button>
+<button id="normal">Обычный режим</button>
+<br>
+<br>
+<div class="sveta">
+    <button class="gray" id="svetofor"></button>
+</div>
+
+<script>
+    const buttonRed = document.querySelector('#red');
+    const buttonYellow = document.querySelector('#yellow');
+    const buttonGreen = document.querySelector('#green');
+    const buttonNormal = document.querySelector('#normal');
+    const targetButton = document.querySelector('#svetofor');
+
+    let intervalId;
+
+    function changeColor() {
+        if (targetButton.classList.contains('red')) {
+            targetButton.classList.remove('red');
+            targetButton.classList.add('yellow');
+            intervalId = setTimeout(changeColor, 2000); // жёлтый цвет 2 секунды
+        } else if (targetButton.classList.contains('yellow')) {
+            targetButton.classList.remove('yellow');
+            targetButton.classList.add('green');
+            intervalId = setTimeout(changeColor, 7000); // зелёный цвет 7 секунд
+        } else {
+            targetButton.classList.remove('green');
+            targetButton.classList.add('red');
+            intervalId = setTimeout(changeColor, 5000); // красный цвет 5 секунд
+        }
+    }
+
+    buttonRed.addEventListener('click', () => {
+        clearTimeout(intervalId);
+        targetButton.classList.remove('yellow', 'green');
+        targetButton.classList.add('red');
+    });
+
+    buttonYellow.addEventListener('click', () => {
+        clearTimeout(intervalId);
+        targetButton.classList.remove('red', 'green');
+        targetButton.classList.add('yellow');
+    });
+
+    buttonGreen.addEventListener('click', () => {
+        clearTimeout(intervalId);
+        targetButton.classList.remove('red', 'yellow');
+        targetButton.classList.add('green');
+    });
+
+    buttonNormal.addEventListener('click', () => {
+        clearTimeout(intervalId);
+        changeColor();
+    });
+
+    intervalId = setTimeout(changeColor, 3000);
+</script>
+<a href="index.html"><button style="border-radius: 50%; padding: 10px; border: none; background: transparent; cursor: pointer;"><img src="Назад.png" style="height: 30px;"></button></a>
+</body>
+</html>

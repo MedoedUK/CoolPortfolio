@@ -1,0 +1,32 @@
+<h3>Дано четырехзначное число.<br>Определить, сколько из них четных.<br>Вывести на экран те из них,<br>которые являются четными.</h3>
+<label for="number">Введите четырехзначное число:</label>
+    <input type="number" id="number" min="1000" max="9999">
+    <button id="checkButton">Проверить</button>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('checkButton').addEventListener('click', function() {
+            const numberInput = document.getElementById('number').value;
+            const resultDiv = document.getElementById('result');
+
+            // Проверка, является ли введенное значение четырехзначным числом
+            if (numberInput.length !== 4 || isNaN(numberInput)) {
+                resultDiv.innerText = 'Четыре числа напиши паже';
+                return;
+            }
+
+            // Разделение числа на цифры
+            const digits = numberInput.split('').map(Number);
+            const evenDigits = digits.filter(digit => digit % 2 === 0);
+            const evenCount = evenDigits.length;
+
+            
+            let resultText = `Четных цифр: ${evenCount}.`;
+            if (evenCount > 0) {
+                resultText += ` Четные цифры: ${evenDigits.join(', ')}.`;
+            }
+
+            resultDiv.innerText = resultText;
+        });
+    </script>
+    <a href="index.html"><button style="border-radius: 50%; padding: 10px; border: none; background: transparent; cursor: pointer;"><img src="Назад.png" style="height: 30px;"></button></a>

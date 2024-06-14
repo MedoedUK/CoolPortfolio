@@ -1,0 +1,167 @@
+<html>
+<head>
+    <title>Сортировка переменных</title>
+</head>
+<body>
+
+        <script>
+    let a = 20;
+    let b = 3;
+    let c = 15;
+    let d = 11;
+    let e = 7;
+    
+    function swap(x,y) { 
+        return [y, x];
+    }
+    
+    if (a < b) [a, b] = swap(a, b);
+    
+    if (a < c) [a, c] = swap(a, c);
+    
+    if (a < d) [a, d] = swap(a, d);
+    
+    if (a < e) [a, e] = swap(a, e);
+    
+    if (b < c) [b, c] = swap (b, c);
+    
+    if (b < d) [b, d] = swap (b, d);
+    
+    if (b < e) [b, e] = swap (b, e);
+    
+    if (c < d) [c, d] = swap (c, d);
+    
+    if (c < e) [c, e] = swap (c, e);
+    
+    if (d < e) [d, e] = swap (d, e);
+    
+    console.log(a, b, c, d, e); 
+    
+        </script>
+
+    </body>
+    </html>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html> 
+<html>
+<head>
+    <title>Сортировка переменных</title>
+</head>
+<body>
+    <script>
+let a = 100;
+let b = 5;
+let c = 15;
+let d = 30;
+let e = 8;
+
+let num = [a, b, c, d, e];
+
+num.sort((x, y) => y - x); 
+
+for (let i = 0; i < num.length; i++) {
+    console.log(num[i]);
+}
+
+    </script>
+-->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Сортировка переменных</title>
+</head>
+<body>
+    <script>
+        
+        var a = 5;
+        var b = 12;
+        var c = 3;
+        var d = 13;
+        var e = 1;
+
+        
+        var variables = [a, b, c, d, e];
+
+        
+        for (var i = 0; i < variables.length - 1; i++) {
+            for (var j = 0; j < variables.length - 1 - i; j++) {
+                if (variables[j] < variables[j + 1]) {
+                    var temp = variables[j];
+                    variables[j] = variables[j + 1];
+                    variables[j + 1] = temp;
+                }
+            }
+        }
+
+        
+        console.log("Переменные по убыванию:");
+        for (var k = 0; k < variables.length; k++) {
+            console.log(variables[k]);
+        }
+    </script>
+</body>
+</html> 
+-->
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Переменные</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          
+            let a = 15, b = 12, c = 26, d = 8, e = 7;
+
+           
+            let variables = [a, b, c, d, e].sort((x, y) => y - x);
+
+            
+            console.log("Переменные по убыванию:", variables);
+
+        });
+    </script>
+</head>
+
+
+</html> -->

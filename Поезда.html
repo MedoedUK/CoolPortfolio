@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    html {
+        background-image: url(Станция.jpg);
+    } 
+    .Часи {
+        width: 30%;
+        margin-top: 3%;
+    }
+    .Дивик {
+        text-align: center;
+        background-color: rgba(42, 51, 44, 50%);
+        color: rgb(255, 255, 255);
+        border: 15px double #ffffff;
+        border-radius: 100px;
+        padding-bottom: 3%;
+        font-family: 'Lato', sans-serif;
+        width: 30%;
+        margin: 0 auto;
+        margin-top: -6.5%;
+    }
+</style>
+<title>Поезда</title>
+</head>
+<body>
+    <a href="index.html"><button style="border-radius: 50%; padding: 10px; border: none; background: transparent; cursor: pointer;"><img src="Белый.png" style="height: 40px; margin-left: 1440%; margin-top: 130%;"></button></a>
+    <div class="Дивик">
+<img src="Часы.png" class="Часи">
+<form id="PribitieForm">
+<h1>Прибытие поезда</h1>
+    
+    <label for="a">Час:</label>
+    <input type="number" id="a" name="a" min="0" max="23" required>
+    <label for="b">Минуты:</label>
+    <input type="number" id="b" name="b" min="0" max="59" required>
+</form>
+<br>
+<form id="OtpravkaForm">
+    
+<h1>Отправка поезда</h1>
+    
+    <label for="c">Час:</label>
+    <input type="number" id="c" name="c" min="0" max="23" required>
+    <label for="d">Минуты:</label>
+    <input type="number" id="d" name="d" min="0" max="59" required>
+</form>
+<br>
+
+<h1>Прибытие пассажира</h1>
+<label for="e">Час:</label>
+<input type="number" id="e" name="e" min="0" max="23" required>
+
+<label for="f">Минуты:</label>
+<input type="number" id="f" name="f" min="0" max="59" required>
+
+<br>
+<br>
+<button onclick="checkTime()">Проверить</button>
+
+<h1>Успеет ли Пассажир</h1>
+<h2>Результат: <span id="threatResult"></span></h2>
+</div>
+
+<script>
+function checkTime() {
+    let a = parseInt(document.getElementById('a').value);
+    let b = parseInt(document.getElementById('b').value);
+    let c = parseInt(document.getElementById('c').value);
+    let d = parseInt(document.getElementById('d').value);
+    let e = parseInt(document.getElementById('e').value);
+    let f = parseInt(document.getElementById('f').value);
+    
+    if (a > 23 || c > 23 || e > 23 || b > 59 || d > 59 || f > 59) {
+        alert("Введите число от 0 до 23 для часов и от 0 до 59 для минут");
+        return;
+    }
+
+    // Переводим время прибытия поезда и пассажира в минуты
+    let arrivalTimeTrain = a * 60 + b;
+    let departureTimeTrain = c * 60 + d;
+    let arrivalTimePassenger = e * 60 + f;
+
+    // Условие arrivalTimeTrain <= arrivalTimePassenger проверяет, прибыл ли пассажир до прибытия поезда. 
+    // Условие arrivalTimePassenger < departureTimeTrain проверяет, ушел ли поезд до прибытия пассажира. 
+    // Если оба условия истинны, значит, поезд будет на платформе, когда придет пассажир.
+    let isTrainOnPlatform = arrivalTimeTrain <= arrivalTimePassenger && arrivalTimePassenger < departureTimeTrain;
+
+    document.getElementById('threatResult').textContent = isTrainOnPlatform ? "Да" : "Нет";
+}
+</script>
+</body>
+</html>

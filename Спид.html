@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Сравнение скоростей</title>
+</head>
+<body>
+    <h2>Введите скорость:</h2>
+    <form id="speedForm">
+        <label for="kmPerHour">Скорость в км/час:</label>
+        <input type="number" id="kmPerHour" name="kmPerHour" step="any" required><br><br>
+        <label for="mPerSecond">Скорость в м/с:</label>
+        <input type="number" id="mPerSecond" name="mPerSecond" step="any" required><br><br>
+        <button type="submit">Сравнить</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("speedForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Предотвращаем отправку формы
+
+            // Получаем значения из формы
+            const kmPerHour = parseFloat(document.getElementById("kmPerHour").value);
+            const mPerSecond = parseFloat(document.getElementById("mPerSecond").value);
+
+            // Вызываем функцию для сравнения скоростей
+            const result = compareSpeeds(kmPerHour, mPerSecond);
+
+            // Выводим результат на страницу
+            document.getElementById("result").innerText = result;
+        });
+
+        function compareSpeeds(kmPerHour, mPerSecond) {
+            // Преобразование км/час в м/с
+            const kmToMeters = kmPerHour * 1000; // Конвертируем км в метры
+            const kmPerSecond = kmToMeters / 3600; // Конвертируем часы в секунды
+            // Сравнение скоростей
+            if (kmPerSecond > mPerSecond) {
+                return "Скорость в километрах в час больше.";
+            } else if (kmPerSecond < mPerSecond) {
+                return "Скорость в метрах в секунду больше.";
+            } else {
+                return "Скорости равны.";
+            }
+        }
+    </script>
+    <a href="index.html"><button style="border-radius: 50%; padding: 10px; border: none; background: transparent; cursor: pointer;"><img src="Назад.png" style="height: 30px;"></button></a>
+</body>
+</html>

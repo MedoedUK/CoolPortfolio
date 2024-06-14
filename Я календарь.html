@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чиселки</title>
+</head>
+<body>
+    <label for="Month">Введите число</label>
+    <input type="number" id="Month" min="1" max="12">
+    <button id="result">Ответ</button>
+    <div id="otvet"></div>
+
+    <script>
+        document.getElementById('result').addEventListener('click', function() {
+            const monthInput = document.getElementById('Month').value;
+            const otvetDiv = document.getElementById('otvet');
+
+            const months = [
+                "Январь, Зима, 31 день", "Февраль, Зима, 28(29) дней", "Март, Весна, 31 день", "Апрель, Весна, 30 дней", "Май, Весна, 31 день", "Июнь, Лето, 30 дней", 
+                "Июль, Лето, 31 день", "Август, Лето, 31 день", "Сентябрь, Осень, 30 дней", "Октябрь, Осень, 31 день", "Ноябрь, Осень, 30 дней", "Декабрь, Зима, 31 день" 
+            ];
+
+            const monthIndex = parseInt(monthInput) - 1;
+            
+            if (monthIndex >= 0 && monthIndex < 12) {
+                otvetDiv.innerText = months[monthIndex];
+            } else {
+                otvetDiv.innerText = 'Введите правильный номер (1-12)';
+            }
+        });
+    </script>
+    <a href="index.html"><button style="border-radius: 50%; padding: 10px; border: none; background: transparent; cursor: pointer;"><img src="Назад.png" style="height: 30px;"></button></a>
+</body>
+</html>

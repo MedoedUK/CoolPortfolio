@@ -1,0 +1,22 @@
+<h2>Нажмите F12, затем Console</h2>
+<script>
+
+var a=57
+var b=6
+var c=20
+var d=35
+var e=100
+console.log("Даны четыре целых числа.\nОпределить, сколько из них четных.\nВывести на экран те из них,\nкоторые являются четными.\n\n" + a + " "  + b + " " + c + " " +  d + " " + e)
+
+const numbers = [a, b, c, d, e];
+
+// isOdd() возвращает true, если переданное в неё число чётное
+const isOdd = (num) => num % 2 == 0;
+
+// метод filter() возвращает новый массив, состоящий из только из тех элементов первоначального массива, на которых функция-колбэк вернёт true
+const odd = numbers.filter(isOdd);
+
+console.log("Чётные числа: " + odd);
+
+</script>
+<a href="index.html"><button style="border-radius: 50%; padding: 10px; border: none; background: transparent; cursor: pointer;"><img src="Назад.png" style="height: 30px;"></button></a>

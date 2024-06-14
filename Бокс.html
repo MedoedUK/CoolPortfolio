@@ -1,0 +1,17 @@
+<h2>Нажмите F12, затем Console</h2>
+<a href="index.html"><button style="border-radius: 50%; padding: 10px; border: none; background: transparent; cursor: pointer;"><img src="Назад.png" style="height: 30px;"></button></a>
+<script>
+    let weight=60
+    let category=KnowWeight;
+
+    function KnowWeight(weight) {
+        if(weight<=60) {
+            return "Лёгкий вес";
+        } else if(weight<=64) {
+            return "Первый полусредний вес"; 
+        } else if(weight <=69) {
+            return "Полусредний вес"
+        }
+    }
+    console.log("         Необходимо узнать\nКакая будет весовая категория у боксёра\n" + "Вес:" + weight + "кг      \nКатегория:" + KnowWeight(weight))
+</script>
